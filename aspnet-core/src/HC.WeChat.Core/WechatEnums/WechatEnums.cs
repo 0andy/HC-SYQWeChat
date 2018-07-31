@@ -301,4 +301,11 @@ namespace HC.WeChat.WechatEnums
     {
         店铺=1
     }
+
+    public enum OrderStatus
+    {
+        未支付 = 1,
+        未消费 = 2, //已支付
+        退款 = 3
+    }
 }

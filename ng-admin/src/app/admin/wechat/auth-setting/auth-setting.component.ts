@@ -58,7 +58,7 @@ export class AuthSettingComponent extends AppComponentBase implements OnInit {
             // nextGettime: [null]
         });
         this.getAuthSetByTenantId();
-        this.refreshData();
+        // this.refreshData();
     }
     /**
      * 
@@ -156,10 +156,10 @@ export class AuthSettingComponent extends AppComponentBase implements OnInit {
      * 批量分组
      */
     batchMark() {
-        this.grouploading=true;
+        this.grouploading = true;
         this.WeChatGroupService.BatchMarkWeChatUser().subscribe(() => {
             this.notify.info(this.l('分组成功！'));
-            this.grouploading=false;
+            this.grouploading = false;
         });
     }
 

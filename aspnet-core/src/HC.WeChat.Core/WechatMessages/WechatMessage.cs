@@ -13,7 +13,7 @@ namespace HC.WeChat.WechatMessages
     /// 微信消息处理
     /// </summary>
     [Table("WechatMessages")]
-    public class WechatMessage : AuditedEntity<Guid>, IMayHaveTenant
+    public class WechatMessage : AuditedEntity<Guid>
     {
 
         /// <summary>

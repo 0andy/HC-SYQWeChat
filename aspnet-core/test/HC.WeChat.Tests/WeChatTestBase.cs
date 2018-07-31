@@ -38,7 +38,7 @@ namespace HC.WeChat.Tests
             });
 
             // Seed initial data for default tenant
-            AbpSession.TenantId = 1;
+            AbpSession.TenantId = null;
             UsingDbContext(context =>
             {
                 NormalizeDbContext(context);

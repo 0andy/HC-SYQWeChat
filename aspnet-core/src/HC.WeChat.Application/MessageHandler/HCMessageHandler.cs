@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Senparc.Weixin.Entities.Request;
+using Abp.Authorization;
+using System.Threading.Tasks;
 
 namespace HC.WeChat.MessageHandler
 {
@@ -24,7 +26,8 @@ namespace HC.WeChat.MessageHandler
         public ILogger Logger { protected get; set; }
 
         //private int? _tenantId = 0;
-        private int? _tenantId;
+        //private int? _tenantId;
+        private int? _tenantId = 1; //非多租户
 
 
         public HCMessageHandler(IRepository<WechatMessage, Guid> wechatmessageRepository, 
@@ -43,7 +46,8 @@ namespace HC.WeChat.MessageHandler
 
         private WechatSubscribe GetWechatSubscribe()
         {
-            return _wechatsubscribeRepository.GetAll().Where(w => w.TenantId == _tenantId).FirstOrDefault();
+            return _wechatsubscribeRepository.GetAll().FirstOrDefault();
+            //return _wechatsubscribeRepository.GetAll().Where(w => w.TenantId == _tenantId).FirstOrDefault();
         }
 
         private List<WechatMessage> GetWechatMessageList()
@@ -130,6 +134,7 @@ namespace HC.WeChat.MessageHandler
                         var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(requestMessage);
                         responseMessage.Content = MessageInfo.SubscribeMsg;
                         Subscribe(requestMessage);
+                        
                         return responseMessage;
                     }
                     else
@@ -169,6 +174,12 @@ namespace HC.WeChat.MessageHandler
                 responseMessage.Content = this.MessageInfo.KeyWords["默认"];
                 return responseMessage;
             }
+            //else if (this.MessageInfo.KeyWords.Keys.Contains("客服电话"))
+            //{
+            //    var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+            //    responseMessage.Content = this.MessageInfo.KeyWords["客服电话"];
+            //    return responseMessage;
+            //}
             else
             {
                 var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
@@ -193,9 +204,27 @@ namespace HC.WeChat.MessageHandler
                 responseMessage.Articles.Add(GetPicSubscribe());
                 return responseMessage;
             });
-
+            //requestHandler.Keywords(new string[] { "转载须知"}, () =>
+            //{
+            //    var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
+            //    responseMessage.ArticleCount = 1;
+            //    responseMessage.Articles.Add(GetPicZhuanZaiXuZhi());
+            //    return responseMessage;
+            //});
             foreach (var item in this.MessageInfo.KeyWords)
             {
+                //if (item.Key == "客户电话")
+                //{
+                //    requestHandler.Default(() =>
+                //    {
+                //        var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+                //        responseMessage.Content = this.MessageInfo.KeyWords["客户电话"];
+                //        //var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
+                //        //responseMessage.ArticleCount = 1;
+                //        //responseMessage.Articles.Add(GetPicSubscribe());
+                //        return responseMessage;
+                //    });
+                //}
                 if (item.Key == "默认")
                 {
                     requestHandler.Default(() =>
@@ -276,5 +305,43 @@ namespace HC.WeChat.MessageHandler
                 Url = subscribe.Content
             };
         }
+
+        /// <summary>
+        /// 拉取转载须知
+        /// </summary>
+        /// <returns></returns>
+        public virtual Article GetPicZhuanZaiXuZhi()
+        {
+            var pic = _wechatmessageRepository.GetAll().Where(v=>v.KeyWord =="转载须知").FirstOrDefault();
+            return new Article()
+            {
+                Title = pic.Title,
+                Description = pic.Desc,
+                PicUrl = pic.PicLink,
+                Url = pic.Content
+            };
+        }
+
+
+        public override IResponseMessageBase OnEvent_ClickRequest(RequestMessageEvent_Click requestMessage)
+        {
+            if (requestMessage.EventKey == "客服电话")
+            {
+                var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+                responseMessage.Content = _wechatmessageRepository.GetAll().Where(v => v.KeyWord == "客服电话").Select(v => v.Content).FirstOrDefault();
+                return responseMessage;
+            } else if (requestMessage.EventKey == "转载须知")
+            {
+                var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
+                responseMessage.ArticleCount = 1;
+                responseMessage.Articles.Add(GetPicZhuanZaiXuZhi());
+                return responseMessage;
+
+            }
+            else
+            {
+                return new SuccessResponseMessage();
+            }
+        } 
     }
 }

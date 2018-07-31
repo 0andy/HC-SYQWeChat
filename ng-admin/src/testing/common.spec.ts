@@ -15,7 +15,7 @@ import { AlainAuthModule } from '@delon/auth';
 import { HttpLoaderFactory } from '../app/app.module';
 
 const resetTestingModule = TestBed.resetTestingModule,
-      preventAngularFromResetting = () => TestBed.resetTestingModule = () => TestBed;
+    preventAngularFromResetting = () => TestBed.resetTestingModule = () => TestBed;
 const allowAngularToReset = () => TestBed.resetTestingModule = resetTestingModule;
 
 export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
@@ -52,7 +52,7 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
         moduleDef.providers.push({ provide: ALAIN_THEME_OPTIONS, useValue: {} });
         moduleDef.providers.push({ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false });
         // load full services
-        [ SettingsService, MenuService, ScrollService, ColorsService, _HttpClient ].forEach((item: any) => {
+        [SettingsService, MenuService, ScrollService, ColorsService, _HttpClient].forEach((item: any) => {
             if (moduleDef.providers.includes(item)) return;
             moduleDef.providers.push(item);
         });

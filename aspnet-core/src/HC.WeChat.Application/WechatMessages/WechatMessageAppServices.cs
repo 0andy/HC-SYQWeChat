@@ -144,7 +144,7 @@ namespace HC.WeChat.WechatMessages
         {
             //TODO:新增前的逻辑判断，是否允许新增
             var entity = ObjectMapper.Map<WechatMessage>(input);
-            entity.TenantId = AbpSession.TenantId;
+            //entity.TenantId = AbpSession.TenantId;
             entity = await _wechatmessageRepository.InsertAsync(entity);
             return entity.MapTo<WechatMessageEditDto>();
         }

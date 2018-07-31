@@ -8,7 +8,7 @@ import { SidebarComponent } from './default/sidebar/sidebar.component';
 import { HeaderSearchComponent } from './default/header/components/search.component';
 import { HeaderThemeComponent } from './default/header/components/theme.component';
 import { HeaderNotifyComponent } from './default/header/components/notify.component';
-import { HeaderTaskComponent } from './default/header/components/task.component';
+// import { HeaderTaskComponent } from './default/header/components/task.component';
 import { HeaderIconComponent } from './default/header/components/icon.component';
 import { HeaderFullScreenComponent } from './default/header/components/fullscreen.component';
 import { HeaderLangsComponent } from './default/header/components/langs.component';
@@ -30,7 +30,7 @@ const COMPONENTS = [
 const HEADERCOMPONENTS = [
     HeaderSearchComponent,
     HeaderNotifyComponent,
-    HeaderTaskComponent,
+    // HeaderTaskComponent,
     HeaderIconComponent,
     HeaderFullScreenComponent,
     HeaderThemeComponent,

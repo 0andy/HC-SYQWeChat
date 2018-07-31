@@ -148,7 +148,7 @@ namespace HC.WeChat.WechatAppConfigs
         {
             //TODO:新增前的逻辑判断，是否允许新增
             var entity = ObjectMapper.Map<WechatAppConfig>(input);
-            entity.TenantId = AbpSession.TenantId;
+            //entity.TenantId = AbpSession.TenantId;
             entity = await _wechatappconfigRepository.InsertAsync(entity);
             return entity.MapTo<WechatAppConfigEditDto>();
         }
@@ -215,7 +215,7 @@ namespace HC.WeChat.WechatAppConfigs
         /// <returns></returns>
         public async Task<WechatAppConfigListDto> GetTenantWechatAppConfigAsync()
         {
-            var entity = await _wechatappconfigRepository.GetAll().Where(w => w.TenantId == AbpSession.TenantId).FirstOrDefaultAsync();
+            var entity = await _wechatappconfigRepository.GetAll().FirstOrDefaultAsync();
             return  entity.MapTo<WechatAppConfigListDto>();
         }
 

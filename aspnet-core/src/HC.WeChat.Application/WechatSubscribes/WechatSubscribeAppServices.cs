@@ -141,7 +141,7 @@ namespace HC.WeChat.WechatSubscribes
         {
             //TODO:新增前的逻辑判断，是否允许新增
             var entity = ObjectMapper.Map<WechatSubscribe>(input);
-            entity.TenantId = AbpSession.TenantId;
+            //entity.TenantId = AbpSession.TenantId;
             entity = await _wechatsubscribeRepository.InsertAsync(entity);
             return entity.MapTo<WechatSubscribeEditDto>();
         }
@@ -189,7 +189,8 @@ namespace HC.WeChat.WechatSubscribes
         /// <returns></returns>
         public async Task<WechatSubscribeListDto> GetSubscribeInfoByTenantId()
         {
-            var entity =await  _wechatsubscribeRepository.GetAll().FirstOrDefaultAsync(s => s.TenantId == AbpSession.TenantId);
+            var entity = await _wechatsubscribeRepository.GetAll().FirstOrDefaultAsync();
+            //var entity =await  _wechatsubscribeRepository.GetAll().FirstOrDefaultAsync(s => s.TenantId == AbpSession.TenantId);
             return entity.MapTo<WechatSubscribeListDto>();
 
         }

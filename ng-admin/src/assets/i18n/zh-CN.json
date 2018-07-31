@@ -103,8 +103,8 @@
     "roles": "角色管理",
     "tenants": "租户管理",
     "homeindex": {
-        "title": "广安烟草",
-        "welcome": "欢迎您！广安烟草信息化平台V2.0"
+        "title": "撒野趣",
+        "welcome": "欢迎您！撒野趣信息化平台V2.0"
     },
     "rolepage": {
         "title": "角色管理",
@@ -178,5 +178,7 @@
     "integral-search": "积分查询",
     "member-setting": "会员设置",
     "lottery-setting": "抽奖设置",
-    "exhibition": "陈列活动"
+    "exhibition": "陈列活动",
+    "order-center": "订单中心",
+    "order-list": "订单管理"
 }

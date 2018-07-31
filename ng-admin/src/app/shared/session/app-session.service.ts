@@ -50,7 +50,7 @@ export class AppSessionService {
         return this.tenant ? this.tenant.id : null;
     }
 
-    get roles(): string[]{
+    get roles(): string[] {
         return this._roles;
     }
 
@@ -87,7 +87,7 @@ export class AppSessionService {
                     if (result.roles.includes('HostAdmin')) {
                         //alert(1);
                         this.aclService.setFull(true);
-                    } 
+                    }
                     else {
                         //alert(3);
                         //Admin MarketingCenter CustomerManager
@@ -96,7 +96,7 @@ export class AppSessionService {
                     }
                     this.reMenu();
                 }
-                
+
                 resolve(true);
             }, (err) => {
                 reject(err);

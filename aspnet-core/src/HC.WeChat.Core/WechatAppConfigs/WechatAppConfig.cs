@@ -13,7 +13,7 @@ namespace HC.WeChat.WechatAppConfigs
     /// 微信授权配置
     /// </summary>
     [Table("WechatAppConfigs")]
-    public class WechatAppConfig : AuditedEntity, IMayHaveTenant
+    public class WechatAppConfig : AuditedEntity
     {
         //public DateTime CreationTime { get; set; }
         //public DateTime? LastModificationTime { get; set; }

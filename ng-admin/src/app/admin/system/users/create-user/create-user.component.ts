@@ -5,8 +5,8 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
-import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
-import { Employee } from '@shared/entity/marketting';
+// import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
+// import { Employee } from '@shared/entity/marketting';
 
 //import * as _ from "lodash";
 
@@ -18,7 +18,7 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
 
     //@ViewChild('createUserModal') modal: ModalDirective;
     //@ViewChild('modalContent') modalContent: ElementRef;
-    @ViewChild('selectEmployeeModal') selectEmployeeModal: EmployeeModalComponent;
+    // @ViewChild('selectEmployeeModal') selectEmployeeModal: EmployeeModalComponent;
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -54,11 +54,11 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
         }, );
     }
 
-    getRoles(){
+    getRoles() {
         this._userService.getRoles()
-        .subscribe((result) => {
-            this.roles = result.items.map(i => { return { label: i.name, value: i.normalizedName, checked: true }; });
-        });
+            .subscribe((result) => {
+                this.roles = result.items.map(i => { return { label: i.name, value: i.normalizedName, checked: true }; });
+            });
     }
 
     show(): void {
@@ -71,8 +71,8 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
             element.checked = true;
         });
         this.modalVisible = true;
-         //对isDisablec做初始化
-         this.isDisablec = false;
+        //对isDisablec做初始化
+        this.isDisablec = false;
     }
 
     //onShown(): void {
@@ -158,27 +158,27 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
     /**
      * 显示员工列表模态框
      */
-    employee(): void {
-        this.selectEmployeeModal.show();
-    }
+    // employee(): void {
+    //     this.selectEmployeeModal.show();
+    // }
     /**
      * 模态框返回
      */
-    getSelectData = (employee?: Employee) => {
-        //对isDisablec做初始化
-        this.isDisablec = false;
-        if (employee) {
-            if (employee.id) {
-                this.isDisablec = true;
-            }
-            this.user.name = employee.name;
-            this.user.employeeId = employee.id;
-        }
-        for (const key in this.form.controls) {
-            if (!this.user[key]) {
-                this.form.controls[key].markAsPristine();
-            }
-        }
-    }
+    // getSelectData = (employee?: Employee) => {
+    //     //对isDisablec做初始化
+    //     this.isDisablec = false;
+    //     if (employee) {
+    //         if (employee.id) {
+    //             this.isDisablec = true;
+    //         }
+    //         this.user.name = employee.name;
+    //         this.user.employeeId = employee.id;
+    //     }
+    //     for (const key in this.form.controls) {
+    //         if (!this.user[key]) {
+    //             this.form.controls[key].markAsPristine();
+    //         }
+    //     }
+    // }
 
 }

@@ -47,6 +47,7 @@ namespace Abp.WeChat.Senparc.MessageHandlers
         /// </summary>
         public abstract void ConfigurationMessageInfo(RequestMessageText requestMessage);
 
+        //public abstract void MenuClickEvent(RequestMessageEvent_Click requestMessage);
 
         public AbpMessageHandler(Stream inputStream, PostModel postModel, int maxRecordCount = 0)
             : base(inputStream, postModel, maxRecordCount)
@@ -228,7 +229,7 @@ namespace Abp.WeChat.Senparc.MessageHandlers
         public override IResponseMessageBase OnEvent_UnsubscribeRequest(RequestMessageEvent_Unsubscribe requestMessage)
         {
             //取消关注
-            Unsubscribe(requestMessage); 
+            Unsubscribe(requestMessage);
             return base.OnEvent_UnsubscribeRequest(requestMessage);
         }
 
@@ -247,18 +248,20 @@ namespace Abp.WeChat.Senparc.MessageHandlers
 
         public override Task<IResponseMessageBase> OnEvent_ClickRequestAsync(RequestMessageEvent_Click requestMessage)
         {
-            return Task.Factory.StartNew(() =>
-            {
-                var syncResponseMessage = OnEvent_ClickRequest(requestMessage);//这里为了保持Demo的连贯性，结果先从同步方法获取，实际使用过程中可以全部直接定义异步方法
-                //常识获取Click事件的同步方法
-                if (syncResponseMessage is ResponseMessageText)
-                {
-                    var textResponseMessage = syncResponseMessage as ResponseMessageText;
-                    textResponseMessage.Content += "\r\n\r\n  -- 来自【异步MessageHandler】的回复";
-                }
+            //MenuClickEvent(requestMessage);
 
-                return syncResponseMessage;
-            });
+            return Task.Factory.StartNew(() =>
+    {
+        var syncResponseMessage = OnEvent_ClickRequest(requestMessage);//这里为了保持Demo的连贯性，结果先从同步方法获取，实际使用过程中可以全部直接定义异步方法
+                                                                       //常识获取Click事件的同步方法
+                if (syncResponseMessage is ResponseMessageText)
+        {
+            var textResponseMessage = syncResponseMessage as ResponseMessageText;
+            textResponseMessage.Content += "\r\n\r\n  -- 来自【异步MessageHandler】的回复";
+        }
+
+        return syncResponseMessage;
+    });
         }
     }
 }

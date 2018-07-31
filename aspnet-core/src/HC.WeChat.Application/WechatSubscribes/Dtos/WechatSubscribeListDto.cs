@@ -12,7 +12,7 @@ namespace HC.WeChat.WechatSubscribes.Dtos
         ////ECC/ END CUSTOM CODE SECTION
         public MsgTypeEnum MsgType { get; set; }
         public string Content { get; set; }
-        public int? TenantId { get; set; }
+        //public int? TenantId { get; set; }
         public DateTime CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public DateTime? LastModificationTime { get; set; }

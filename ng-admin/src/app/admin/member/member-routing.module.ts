@@ -3,21 +3,13 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { MemberManagementComponent } from "./member-management/member-management.component";
 import { AppRouteGuard } from "@shared/auth/auth-route-guard";
-import { IntegralSearchComponent } from "./integral-search/integral-search.component";
-import { MemberSettingComponent } from "./member-setting/member-setting.component";
-import { IntegralSearchDetailComponent } from "./integral-search/integral-search-detail/integral-search-detail.component";
-import { LotterySettingComponent } from "./lottery-setting/lottery-setting.component";
-import { RecordDetailComponent } from "./lottery-setting/record-detail/record-detail.component";
+import { MemberDetailComponent } from "./member-management/member-detail/member-detail.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'member-management', component: MemberManagementComponent, data: { translate: 'member-management', permission: 'Pages' }, canActivate: [AppRouteGuard] },
-  { path: 'integral-search', component: IntegralSearchComponent, data: { translate: 'integral-search', permission: 'Pages' }, canActivate: [AppRouteGuard] },
-  { path: 'member-setting', component: MemberSettingComponent, data: { translate: 'member-setting', permission: 'Pages' }, canActivate: [AppRouteGuard] },
-  { path: 'integral-search-detail/:openId', component: IntegralSearchDetailComponent, data: { translate: 'integral-search-detail', permission: 'Pages' }, canActivate: [AppRouteGuard] },
-  { path: 'lottery-setting', component: LotterySettingComponent, data: { translate: 'lottery-setting', permission: 'Pages' }, canActivate: [AppRouteGuard] },
-  { path: 'lottery-record-detail/:id', component: RecordDetailComponent, data: { translate: 'lottery-setting', permission: 'Pages' }, canActivate: [AppRouteGuard] }
-  
+  // { path: 'member-detail', component: MemberDetailComponent, data: { translate: 'member-management', permission: 'Pages' }, canActivate: [AppRouteGuard] },
+  // { path: 'member-detail/:id', component: MemberDetailComponent, data: { translate: 'member-management', permission: 'Pages' }, canActivate: [AppRouteGuard] },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

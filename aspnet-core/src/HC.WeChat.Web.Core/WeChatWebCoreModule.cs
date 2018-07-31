@@ -12,7 +12,6 @@ using HC.WeChat.Authentication.JwtBearer;
 using HC.WeChat.Configuration;
 using HC.WeChat.EntityFrameworkCore;
 using Abp.Threading.BackgroundWorkers;
-using HC.WeChat.LevelJob;
 
 #if FEATURE_SIGNALR
 using Abp.Web.SignalR;
@@ -75,11 +74,6 @@ namespace HC.WeChat
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(WeChatWebCoreModule).GetAssembly());
-        }
-        public override void PostInitialize()
-        {
-            var workManager = IocManager.Resolve<IBackgroundWorkerManager>();
-            workManager.Add(IocManager.Resolve<UpdateLevelWorker>());
         }
     }
 }

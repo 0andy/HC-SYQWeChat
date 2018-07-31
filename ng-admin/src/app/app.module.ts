@@ -44,21 +44,21 @@ export function StartupServiceFactory(injector: Injector): Function {//abp 集�
     //abp.multiTenancy.setTenantIdCookie(2);//默认将租户设为宜宾
     return () => {
         return new Promise<boolean>((resolve, reject) => {
-          AppPreBootstrap.run(() => {
-            var appSessionService: AppSessionService = injector.get(AppSessionService);
-            appSessionService.init().then(
-              (result) => {
-                resolve(result);
-              },
-              (err) => {
-                reject(err);
-              }
-            );
-            var startupService: StartupService = injector.get(StartupService);
-            startupService.load();
-          });
+            AppPreBootstrap.run(() => {
+                var appSessionService: AppSessionService = injector.get(AppSessionService);
+                appSessionService.init().then(
+                    (result) => {
+                        resolve(result);
+                    },
+                    (err) => {
+                        reject(err);
+                    }
+                );
+                var startupService: StartupService = injector.get(StartupService);
+                startupService.load();
+            });
         });
-      }
+    }
 }
 
 export function getRemoteServiceBaseUrl(): string {
@@ -99,7 +99,7 @@ export function getCurrentLanguage(): string {
     providers: [
         { provide: LOCALE_ID, useValue: 'zh-CN' },
         //{ provide: LOCALE_ID, useFactory: getCurrentLanguage }, //abp 集成
-        
+
         //拦截器
         //{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
         //{ provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true},

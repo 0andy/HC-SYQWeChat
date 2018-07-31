@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, Abst
 
 import * as _ from "lodash";
 import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
-import { Employee } from '@shared/entity/marketting';
+// import { Employee } from '@shared/entity/marketting';
 
 @Component({
     selector: 'edit-user-modal',
@@ -151,26 +151,26 @@ export class EditUserComponent extends AppComponentBase implements OnInit {
     /**
      * 显示选择员工弹框
      */
-    employees() {
-        this.selecteEmployeeModal.show();
-    }
+    // employees() {
+    //     this.selecteEmployeeModal.show();
+    // }
     /**
      * 选择员工弹框回传数据
      */
-    getSelectData = (employee: Employee) => {
-        //对isDisable做初始化
-        this.isDisable = false;
-        if (employee) {
-            if (employee.id) {
-                this.isDisable = true;
-            }
-            this.user.name = employee.name;
-            this.user.employeeId = employee.id;
-        }
-        for (const key in this.eform.controls) {
-            if (!this.user[key]) {
-                this.eform.controls[key].markAsPristine();
-            }
-        }
-    }
+    // getSelectData = (employee: Employee) => {
+    //     //对isDisable做初始化
+    //     this.isDisable = false;
+    //     if (employee) {
+    //         if (employee.id) {
+    //             this.isDisable = true;
+    //         }
+    //         this.user.name = employee.name;
+    //         this.user.employeeId = employee.id;
+    //     }
+    //     for (const key in this.eform.controls) {
+    //         if (!this.user[key]) {
+    //             this.eform.controls[key].markAsPristine();
+    //         }
+    //     }
+    // }
 }

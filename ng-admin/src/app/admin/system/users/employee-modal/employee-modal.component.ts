@@ -1,8 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EmployeeServiceProxy, PagedResultDtoOfEmployee } from '@shared/service-proxies/marketing-service/employee-service';
 import { EmployeesServiceProxy } from '@shared/service-proxies/service-proxies';
 import { Parameter } from '@shared/service-proxies/entity';
-import { Employee } from '@shared/entity/marketting';
 
 @Component({
     moduleId: module.id,
@@ -23,7 +21,7 @@ export class EmployeeModalComponent implements OnInit {
     };
     eloading = false;
     emodalVisible = false;
-    employee: Employee[] = [];
+    // employee: Employee[] = [];
     status = [
         { text: '启用', value: false, type: 'success' },
         { text: '禁用', value: false, type: 'default' }
@@ -35,34 +33,34 @@ export class EmployeeModalComponent implements OnInit {
         { text: '消费者', value: 4 },
         { text: '取消关注', value: 5 },
     ];
-    isManger=false;
-    constructor(private employeeService: EmployeeServiceProxy, private service: EmployeesServiceProxy) {
+    isManger = false;
+    constructor(private service: EmployeesServiceProxy) {
 
     }
     ngOnInit(): void {
 
     }
     //isManger用判断模态框是否只显示经理级的员工
-    show(isManger=false) {
-        this.isManger=isManger
-        this.employee = new Array<Employee>();
-        // this.employee=[];
-        this.emodalVisible = true;
-        this.refreshData();
-    }
+    // show(isManger=false) {
+    //     this.isManger=isManger
+    //     this.employee = new Array<Employee>();
+    //     // this.employee=[];
+    //     this.emodalVisible = true;
+    //     this.refreshData();
+    // }
 
     /**
      * 获取
      */
-    refreshData() {
-        this.eloading = true;
-        this.service.getAllModal(this.getParameter()).subscribe((result: PagedResultDtoOfEmployee) => {
-            this.eloading = false;
-            let status = 5;
-            this.employee = result.items;
-            this.q.total = result.totalCount;
-        });
-    }
+    // refreshData() {
+    //     this.eloading = true;
+    //     this.service.getAllModal(this.getParameter()).subscribe((result: PagedResultDtoOfEmployee) => {
+    //         this.eloading = false;
+    //         let status = 5;
+    //         this.employee = result.items;
+    //         this.q.total = result.totalCount;
+    //     });
+    // }
     getParameter(): Parameter[] {
         var arry = [];
         arry.push(Parameter.fromJS({ key: 'Filter', value: this.q.no }));
@@ -84,10 +82,10 @@ export class EmployeeModalComponent implements OnInit {
      * 
      * @param employee 选择事件（对选择的数据进行回传）
      */
-    SelectEmployee(employee: Employee): void {
-        this.q.no = '';
-        this.modalSelect.emit(employee);
-        this.emodalVisible = false;
-    }
+    // SelectEmployee(employee: Employee): void {
+    //     this.q.no = '';
+    //     this.modalSelect.emit(employee);
+    //     this.emodalVisible = false;
+    // }
 
 }

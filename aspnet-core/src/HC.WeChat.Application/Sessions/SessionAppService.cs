@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Abp.Auditing;
 using Abp.Domain.Repositories;
 using HC.WeChat.Sessions.Dto;
-using HC.WeChat.Shops;
 using HC.WeChat.SignalR;
 using HC.WeChat.WechatEnums;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +13,12 @@ namespace HC.WeChat.Sessions
 {
     public class SessionAppService : WeChatAppServiceBase
     {
-        private readonly IRepository<Shop, Guid> _shopRepository;
+        //private readonly IRepository<Shop, Guid> _shopRepository;
 
-        public SessionAppService(IRepository<Shop, Guid> shopRepository)
-        {
-            _shopRepository = shopRepository;
-        }
+        //public SessionAppService(IRepository<Shop, Guid> shopRepository)
+        //{
+        //    _shopRepository = shopRepository;
+        //}
 
         [DisableAuditing]
         public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
@@ -47,7 +46,7 @@ namespace HC.WeChat.Sessions
             {
                 var user = await GetCurrentUserAsync();
                 output.User = ObjectMapper.Map<UserLoginInfoDto>(user);
-                output.User.NotifyCount = await _shopRepository.GetAll().Where(s => s.Status == ShopAuditStatus.待审核).CountAsync();
+                //output.User.NotifyCount = await _shopRepository.GetAll().Where(s => s.Status == ShopAuditStatus.待审核).CountAsync();
                 output.Roles = await UserManager.GetRolesAsync(user);
                 if (!AbpSession.TenantId.HasValue)
                 {

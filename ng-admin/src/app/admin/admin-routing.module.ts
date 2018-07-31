@@ -9,14 +9,12 @@ const routes: Routes = [
     path: '',
     component: LayoutDefaultComponent,
     children: [
-      { path: '', redirectTo: 'consumer', pathMatch: 'full' },
-      { path: 'consumer', loadChildren: './consumer/consumer.module#ConsumerModule' },
-      { path: 'customer', loadChildren: './customer/customer.module#CustomerModule' },
-      { path: 'marketting', loadChildren: './marketting/marketting.module#MarkettingModule' },
+      { path: '', redirectTo: 'index', pathMatch: 'full' },
       { path: 'member', loadChildren: './member/member.module#MemberModule' },
+      { path: 'order', loadChildren: './order/order.module#OrderModule' },
       { path: 'wechat', loadChildren: './wechat/wechat.module#WeChatModule' },
       { path: 'system', loadChildren: './system/system.module#SystemModule' },
-      
+
       /*{ path: '', redirectTo: 'users', pathMatch: 'full' },
       { path: 'users', component: UsersComponent, data: { translate: 'users', permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
       { path: 'roles', component: RolesComponent, data: { translate: 'roles', permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
@@ -40,7 +38,7 @@ const routes: Routes = [
       { path: 'post-query', component: PostInfoComponent, data: { translate: 'post-query', permission: 'Pages' }, canActivate: [AppRouteGuard] },
       { path: 'sys-config', component: SysConfigComponent, data: { translate: 'sys-config', permission: 'Pages' }, canActivate: [AppRouteGuard] },
       { path: 'data-dictionary', component: DataDictionaryComponent, data: { translate: 'data-dictionary', permission: 'Pages' }, canActivate: [AppRouteGuard] },*/
-      
+
     ]
   }
 ];

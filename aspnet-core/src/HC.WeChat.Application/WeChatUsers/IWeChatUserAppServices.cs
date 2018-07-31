@@ -27,11 +27,6 @@ namespace HC.WeChat.WeChatUsers
         Task<WeChatUserListDto> GetWeChatUserByIdAsync(EntityDto<Guid> input);
 
         /// <summary>
-        /// 通过指定id获取WeChatUserListDto信息
-        /// </summary>
-        Task<WeChatUserListDto> GetWeChatUserByMemberBarCodeAsync(string memberBarCode, int? tenantId);
-
-        /// <summary>
         /// 导出WeChatUser为excel表
         /// </summary>
         /// <returns></returns>
@@ -63,78 +58,12 @@ namespace HC.WeChat.WeChatUsers
         /// </summary>
         Task BatchDeleteWeChatUsersAsync(List<Guid> input);
 
-        Task<APIResultDto> BindWeChatUserAsync(UserBindDto input);
 
-        Task<WeChatUserListDto> GetWeChatUserAsync(string openId, int? tenantId);
+        Task<WeChatUserListDto> GetWeChatUserAsync(string openId);
 
         /// <summary>
         /// 添加或者修改WeChatUser的方法
         /// </summary>
         Task CreateOrUpdateWeChatUserDto(WeChatUserEditDto input);
-
-        /// <summary>
-        /// 绑定会员
-        /// </summary>
-        Task<APIResultDto> BindMemberAsync(MemberBindDto input);
-
-        /// <summary>
-        /// 获取店员信息
-        /// </summary>
-        Task<PagedResultDto<WeChatUserListDto>> GetPagedShopWeChatUsers(GetShopWeChatUsersInput input);
-
-        /// <summary>
-        /// 获取单个微信用户
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="tenantId"></param>
-        /// <returns></returns>
-        Task<WeChatUserListDto> GetSingleWeChatUser(Guid userId, int? tenantId);
-
-        /// <summary>
-        /// 解除绑定
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task CheckWeChatUserBindStatusAsync(WeChatUserEditDto input);
-
-        /// <summary>
-        /// 获取店员信息
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        Task<List<WeChatUserListDto>> GetShopEmployeesAsync(int? tenantId, Guid userId);
-
-        /// <summary>
-        /// 审核店员 
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task<APIResultDto> CheckShopEmployeeAsync(WeChatUserEditDto input);
-
-        /// <summary>
-        /// 获取未审核店员人数
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        Task<int> GetShopEmployeesNoCheckCountAsync(int? tenantId, Guid userId);
-        Task<APIResultDto> ExportWeChatUsersExcel(GetWeChatUsersInput input);
-        Task<APIResultDto> ExportWeChatUsersIntegralExcelAsync(GetWeChatUsersInput input);
-
-        /// <summary>
-        /// 微信用户统计（按零售户分公司统计）
-        /// </summary>
-        /// <returns></returns>
-        Task<WeChatUserStatisticLiDto> GetWeChatUserStatistic();
-
-        /// <summary>
-        /// 是否存在该微信用户
-        /// </summary>
-        /// <param name="openId"></param>
-        /// <returns></returns>
-        Task<bool> GetWeChatUserIsExsit(string openId);
-
-        Task<bool> GetIsAttentionByOpenIdAsync(string openId);
     }
 }

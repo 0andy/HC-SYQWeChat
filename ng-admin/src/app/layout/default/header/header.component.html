@@ -1,6 +1,7 @@
 <div class="logo">
     <a [routerLink]="['/']">
-        <img class="expanded" src="./assets/img/weilog.png" alt="{{settings.app.name}}" style="max-height:40px;" />
+        <img class="expanded" src="./assets/img/syqlogo.png" alt="{{settings.app.name}}" style="width: 100%;
+        height: 100%;" />
         <img class="collapsed" src="./assets/img/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
     </a>
 </div>
@@ -17,7 +18,7 @@
             <div class="item" [routerLink]="['/pages/lock']">
                 <i class="anticon anticon-lock"></i>
             </div>
-        </li> 
+        </li>
         <!-- Search Button -->
         <!-- <li class="header-search__btn" (click)="searchToggleChange()">
             <div class="item">
@@ -32,9 +33,9 @@
             <header-notify></header-notify>
         </li> -->
         <!-- Task -->
-        <li>
+        <!-- <li>
             <header-task></header-task>
-        </li>
+        </li> -->
         <!-- App Icons -->
         <!-- <li class="hidden-xs">
             <header-icon></header-icon>

@@ -6,44 +6,14 @@ using HC.WeChat.MultiTenancy;
 using HC.WeChat.WechatAppConfigs;
 using HC.WeChat.WechatMessages;
 using HC.WeChat.WechatSubscribes;
-using HC.WeChat.Activities;
-using HC.WeChat.ActivityBanquets;
-using HC.WeChat.ActivityDeliveryInfos;
-using HC.WeChat.ActivityForms;
-using HC.WeChat.ActivityFormLogs;
-using HC.WeChat.ActivityGoodses;
-using HC.WeChat.Employees;
-using HC.WeChat.Retailers;
 using HC.WeChat.WeChatUsers;
-using HC.WeChat.Advises;
-using HC.WeChat.UserAnswers;
-using HC.WeChat.UserQuestions;
-using HC.WeChat.Articles;
-using HC.WeChat.IntegralDetails;
-using HC.WeChat.Manuscripts;
-using HC.WeChat.MemberConfigs;
-using HC.WeChat.Products;
-using HC.WeChat.PurchaseRecords;
-using HC.WeChat.Shops;
-using HC.WeChat.ShopEvaluations;
-using HC.WeChat.ShopProducts;
-using HC.WeChat.StatisticalDetails;
 using HC.WeChat.WeChatGroups;
-using HC.WeChat.EPCos;
-using HC.WeChat.EPCoLines;
-using HC.WeChat.GACustPoints;
-using HC.WeChat.GAGoodses;
-using HC.WeChat.GAGrades;
-using HC.WeChat.GoodSources;
-using HC.WeChat.LevelLogs;
-using HC.WeChat.LuckyDraws;
-using HC.WeChat.Prizes;
-using HC.WeChat.UserAddresss;
-using HC.WeChat.WinningRecords;
-using HC.WeChat.QrCodeLogs;
-using HC.WeChat.ExhibitionShops;
-using HC.WeChat.Exhibitions;
-using HC.WeChat.VoteLogs;
+using HC.WeChat.Orders;
+using HC.WeChat.OrderListEnclosures;
+using HC.WeChat.UserInfos;
+
+using HC.WeChat.BuSetInfos;
+using HC.WeChat.Activities;
 
 namespace HC.WeChat.EntityFrameworkCore
 {
@@ -63,81 +33,13 @@ namespace HC.WeChat.EntityFrameworkCore
 
         public virtual DbSet<WechatSubscribe> WechatSubscribes { get; set; }
 
-        public virtual DbSet<Activity> Activities { get; set; }
-
-        public virtual DbSet<ActivityBanquet> ActivityBanquets { get; set; }
-
-        public virtual DbSet<ActivityDeliveryInfo> ActivityDeliveryInfos { get; set; }
-
-        public virtual DbSet<ActivityForm> ActivityForms { get; set; }
-
-        public virtual DbSet<ActivityFormLog> ActivityFormLogs { get; set; }
-
-        public virtual DbSet<ActivityGoods> ActivityGoodses { get; set; }
-
-        public virtual DbSet<Employee> Employees { get; set; }
-
-        public virtual DbSet<Retailer> Retailers { get; set; }
-
         public virtual DbSet<WeChatUser> WeChatUsers { get; set; }
 
-        public virtual DbSet<Advise> Advises { get; set; }
-
-        public virtual DbSet<UserAnswer> UserAnswers { get; set; }
-
-        public virtual DbSet<UserQuestion> UserQuestions { get; set; }
-
-        public virtual DbSet<Article> Articles { get; set; }
-
-        public virtual DbSet<IntegralDetail> IntegralDetails { get; set; }
-
-        public virtual DbSet<Manuscript> Manuscripts { get; set; }
-
-        public virtual DbSet<MemberConfig> MemberConfigs { get; set; }
-
-        public virtual DbSet<Product> Products { get; set; }
-
-        public virtual DbSet<PurchaseRecord> PurchaseRecords { get; set; }
-
-
-        public virtual DbSet<Shop> Shops { get; set; }
-
-        public virtual DbSet<ShopEvaluation> ShopEvaluations { get; set; }
-
-        public virtual DbSet<ShopProduct> ShopProducts { get; set; }
-
-        public virtual DbSet<StatisticalDetail> StatisticalDetails { get; set; }
-
         public virtual DbSet<WeChatGroup> WeChatGroups { get; set; }
-
-        public virtual DbSet<EPCo> EPCos { get; set; }
-
-        public virtual DbSet<EPCoLine> EPCoLines { get; set; }
-
-        public virtual DbSet<GACustPoint> GACustPoints { get; set; }
-
-        public virtual DbSet<GAGoods> GAGoodses { get; set; }
-
-        public virtual DbSet<GAGrade> GAGrades { get; set; }
-
-        public virtual DbSet<GoodSource> GoodSources { get; set; }
-
-        public virtual DbSet<LevelLog> LevelLogs { get; set; }
-
-        public virtual DbSet<LuckyDraw> LuckyDraws { get; set; }
-
-        public virtual DbSet<Prize> Prizes { get; set; }
-
-        public virtual DbSet<UserAddress> UserAddresss { get; set; }
-
-        public virtual DbSet<QrCodeLog> QrCodeLogs { get; set; }
-
-        public virtual DbSet<WinningRecord> WinningRecords { get; set; }
-
-        public virtual DbSet<Exhibition> Exhibitions { get; set; }
-
-        public virtual DbSet<ExhibitionShop> ExhibitionShops { get; set; }
-
-        public virtual DbSet<VoteLog> VoteLogs { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderListEnclosure> OrderListEnclosures { get; set; }
+        public virtual DbSet<UserInfo> UserInfos { get; set; }
+        public virtual DbSet<Activity> Activitys { get; set; }
+        public virtual DbSet<BuSetInfo> BuSetInfos { get; set; }
     }
 }
